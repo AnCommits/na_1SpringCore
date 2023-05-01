@@ -22,10 +22,11 @@
     </bean>
 
     <bean id="musicPlayerBean"
-          class="ru.alishev.springcourse.MusicPlayer">
+          class="ru.alishev.springcourse.MusicPlayer"
+          scope="prototype">
         <property name="musicList" ref="musicListBean"/>
-        <!--        <property name="name" value="${musicPlayer.name}"/>-->
-        <!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+                <property name="name" value="${musicPlayer.name}"/>
+                <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
     <bean id="musicListBean"
