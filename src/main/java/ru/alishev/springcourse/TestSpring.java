@@ -15,6 +15,9 @@ public class TestSpring {
 
         Music music1 = context.getBean("classicalMusicBean", Music.class);
         Music music4 = context.getBean("classicalMusicBean", Music.class);
+        System.out.println(music1);
+        System.out.println(music4);
+        System.out.println(music1 == music4);
 //        Music music2 = context.getBean("rockMusicBean", Music.class);
 //        Music music3 = context.getBean("retroMusicBean", Music.class);
 

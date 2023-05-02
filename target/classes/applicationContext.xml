@@ -13,7 +13,7 @@
           class="ru.alishev.springcourse.ClassicalMusic"
           init-method="doMyInit"
           destroy-method="doMyDestroy"
-          scope="prototype">
+          factory-method="getClassicalMusic">
     </bean>
 
     <bean id="rockMusicBean"
