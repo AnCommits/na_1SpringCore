@@ -12,7 +12,8 @@
     <bean id="classicalMusicBean"
           class="ru.alishev.springcourse.ClassicalMusic"
           init-method="doMyInit"
-          destroy-method="doMyDestroy">
+          destroy-method="doMyDestroy"
+          scope="prototype">
     </bean>
 
     <bean id="rockMusicBean"

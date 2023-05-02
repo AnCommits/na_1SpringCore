@@ -14,6 +14,7 @@ public class TestSpring {
         System.out.println("Point 1");
 
         Music music1 = context.getBean("classicalMusicBean", Music.class);
+        Music music4 = context.getBean("classicalMusicBean", Music.class);
 //        Music music2 = context.getBean("rockMusicBean", Music.class);
 //        Music music3 = context.getBean("retroMusicBean", Music.class);
 
