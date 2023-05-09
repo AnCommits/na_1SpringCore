@@ -1,5 +1,6 @@
 package ru.alishev.springcourse;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Scope("prototype")
 public class ClassicalMusic implements Music {
 
     @PostConstruct
@@ -19,6 +21,7 @@ public class ClassicalMusic implements Music {
     public void doMyDestroy() {
         System.out.println("My destruction");
     }
+
     @Override
     public String getSong() {
         return "Hungarian Rhapsody";
