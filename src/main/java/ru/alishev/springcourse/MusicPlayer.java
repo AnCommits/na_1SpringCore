@@ -11,41 +11,19 @@ import java.util.Random;
 //@Component
 public class MusicPlayer {
 
-    @Value("${musicPlayer.name}")
-    private String name;
-    @Value("${musicPlayer.volume}")
-    private int volume;
+    private List<Music> musicList;
 
-    public String getName() {
-        return name;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    public int getVolume() {
-        return volume;
+    public String playMusic() {
+        int numberOfSong = getRandomSongNumber(musicList);
+        return "Playing: " + musicList.get(numberOfSong).getSong();
     }
 
-    //    private static final Random ran = new Random();
-    private Music music1;
-    private Music music2;
-
-//    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music music1,
-                       @Qualifier("classicalMusic") Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+    private int getRandomSongNumber(List<Music> songList) {
+        Random ran = new Random();
+        return ran.nextInt(songList.size());
     }
-
-    public String playMusic(Genre genre) {
-        return "Playing: " + music1.getSong() + ", " + music2.getSong();
-//        List<String> songList = switch (genre) {
-//            case ROCK -> music1.getSongList();
-//            case CLASSICAL -> music2.getSongList();
-//        };
-//        int numberOfSong = getRandomSongNumber(songList);
-//        return "Playing: " + songList.get(numberOfSong);
-    }
-
-//    protected int getRandomSongNumber(List<String> songList) {
-//        return ran.nextInt(songList.size());
-//    }
 }
