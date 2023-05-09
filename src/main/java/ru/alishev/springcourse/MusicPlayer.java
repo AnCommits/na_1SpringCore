@@ -2,6 +2,7 @@ package ru.alishev.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -9,7 +10,21 @@ import java.util.Random;
 
 @Component
 public class MusicPlayer {
-    private static final Random ran = new Random();
+
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    //    private static final Random ran = new Random();
     private Music music1;
     private Music music2;
 
@@ -21,15 +36,16 @@ public class MusicPlayer {
     }
 
     public String playMusic(Genre genre) {
-        List<String> songList = switch (genre) {
-            case ROCK -> music1.getSongList();
-            case CLASSICAL -> music2.getSongList();
-        };
-        int numberOfSong = getRandomSongNumber(songList);
-        return "Playing: " + songList.get(numberOfSong);
+        return "Playing: " + music1.getSong() + ", " + music2.getSong();
+//        List<String> songList = switch (genre) {
+//            case ROCK -> music1.getSongList();
+//            case CLASSICAL -> music2.getSongList();
+//        };
+//        int numberOfSong = getRandomSongNumber(songList);
+//        return "Playing: " + songList.get(numberOfSong);
     }
 
-    protected int getRandomSongNumber(List<String> songList) {
-        return ran.nextInt(songList.size());
-    }
+//    protected int getRandomSongNumber(List<String> songList) {
+//        return ran.nextInt(songList.size());
+//    }
 }
